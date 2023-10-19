@@ -104,14 +104,14 @@ function simularTorneio(jogadores) {
         resultados[i][j] = '-';
       } else {
         if (!resultados[j] || resultados[j][i] === undefined) {
-          resultados[i][j] = Math.random() < 0.33 ? 'D' : Math.random() < 0.66 ? 'E' : 'V';
+          resultados[i][j] = Math.random() < 0.33 ? ' | DERROTA PARA O TIME ' + jogadores[i] : Math.random() < 0.66 ? '|EMPATE' : ' | VITÓRIA  PARA O TIME ' + jogadores[i];
 
-          if (resultados[i][j] === 'V') {
+          if (resultados[i][j] === ' | VITÓRIA  PARA O TIME ' ) {
             pontos[jogadores[i]] = (pontos[jogadores[i]] || 0) + 3;
-          } else if (resultados[i][j] === 'E') {
+          } else if (resultados[i][j] === '|EMPATE') {
             pontos[jogadores[i]] = (pontos[jogadores[i]] || 0) + 1;
             pontos[jogadores[j]] = (pontos[jogadores[j]] || 0) + 1;
-          } else if (resultados[i][j] === 'D') {
+          } else if (resultados[i][j] === ' | DERROTA PARA O TIME ') {
             pontos[jogadores[j]] = (pontos[jogadores[j]] || 0) + 3;
           }
 
@@ -122,7 +122,7 @@ function simularTorneio(jogadores) {
             resultado: resultados[i][j],
           });
         } else {
-          resultados[i][j] = resultados[j][i] === 'V' ? 'D' : 'V';
+          resultados[i][j] = resultados[j][i] === ' | VITÓRIA  PARA O TIME ' ? ' | DERROTA PARA O TIME ' : ' | VITÓRIA  PARA O TIME ';
         }
       }
     }
@@ -157,7 +157,7 @@ function exibirHistoricoPartidas() {
   historicoPartidas.forEach((partida, index) => {
     const linha = tabelaHistoricoPartidas.insertRow();
     const celulaNumeroPartida = linha.insertCell();
-    celulaNumeroPartida.textContent = `Partida ${index + 1}`;
+    celulaNumeroPartida.textContent = `PARTIDA ${index + 1}`;
     const celulaTimes = linha.insertCell();
     celulaTimes.textContent = `${partida.time1} vs ${partida.time2}`;
     const celulaResultado = linha.insertCell();
