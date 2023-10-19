@@ -110,6 +110,18 @@ div#vencedor {
     font-size: 30px;
 }
 
+.botoes::after {
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.5);
+  /* Sombra após o objeto "saltar" */
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: -1;
+}
+
+.botoes:hover {
+  scale: 1 1;
+  transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
 label {
     margin-right: 10px;
 }
