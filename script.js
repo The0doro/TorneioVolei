@@ -7,6 +7,24 @@ const vencedorDiv = document.getElementById('vencedor');
 const MAX_PARTICIPANTES = 20;
 const historicoPartidas = [];
 const botaoMostrarHistorico = document.getElementById('botaoMostrarHistorico');
+const botaoSalvaHist = document.getElementById('SalvaHist');
+const botaoCarrHist = document.getElementById('CarrHist');
+
+botaoSalvaHist.addEventListener('click', SalvaHist);
+botaoCarrHist.addEventListener('click', carregarHistoricoPartidas);
+
+  function SalvaHist() {
+    localStorage.setItem('historicoPartidas', JSON.stringify(historicoPartidas));
+  }
+
+  function CarrHist() {
+    const historicoPartidasSalvo = localStorage.getItem('historicoPartidas');
+    if (historicoPartidasSalvo) {
+      historicoPartidas.length = 0; // Limpa o histórico de partidas atual
+      historicoPartidas.push(...JSON.parse(historicoPartidasSalvo));
+      exibirHistoricoPartidas(); // Exibe o histórico de partidas carregado
+  }
+  }
 
 const botaoVoltar = document.getElementById('botaoVoltar');
 botaoVoltar.addEventListener('click', function() {
