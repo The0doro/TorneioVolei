@@ -11,7 +11,7 @@ const botaoSalvaHist = document.getElementById('SalvaHist');
 const botaoCarrHist = document.getElementById('CarrHist');
 
 botaoSalvaHist.addEventListener('click', SalvaHist);
-botaoCarrHist.addEventListener('click', carregarHistoricoPartidas);
+botaoCarrHist.addEventListener('click', CarrHist);
 
   function SalvaHist() {
     localStorage.setItem('historicoPartidas', JSON.stringify(historicoPartidas));
